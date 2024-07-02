@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -18,16 +19,29 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(9.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset('assets/images/image_login.png', height: 200),
+                Image.asset('assets/images/image_signup.png', height: 200),
                 const SizedBox(height: 20),
                 const Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  'Crie a sua Conta',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Nome',
+                    prefixIcon: const Icon(Icons.person),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 TextField(
@@ -70,13 +84,13 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Log in'),
+                  child: const Text('Register'),
                 ),
                 TextButton(
                   onPressed: () {
                     // Implement navigation to register page here
                   },
-                  child: const Text('Registre-se'),
+                  child: const Text('Login'),
                 ),
               ],
             ),

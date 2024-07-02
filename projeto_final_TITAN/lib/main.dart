@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart'; // Certifique-se de importar o arquivo login_screen.dart
+import 'package:projeto_final_titan/signup_screen.dart';
+import 'login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Login Page',
       theme: ThemeData(
       ),
-      home: const LoginPage(),
+      home: const SignUpPage(),
     );
   }
 }
