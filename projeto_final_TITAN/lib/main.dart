@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final_titan/screens/signup_screen.dart';
+import 'package:projeto_final_titan/screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
 
 void main() {
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login Page',
-      theme: ThemeData(
-      ),
-      home: const SignUpPage(),
+      theme: ThemeData(),
+      home: const WelcomePage(),
     );
   }
 }
+
+
+
