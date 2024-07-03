@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final_titan/screens/profile_screen.dart';
 import 'package:projeto_final_titan/screens/signup_screen.dart';
 import 'package:projeto_final_titan/screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login Page',
       theme: ThemeData(),
-      home: const WelcomePage(),
+      home: const ProfilePage(),
     );
   }
 }
