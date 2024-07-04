@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_navigation_bar.dart';
+import '../components/bottom_navigation_bar.dart';
 import '../widgets/bordered_elevated_button.dart'; // Importe o widget personalizado
 
 class ProfilePage extends StatelessWidget {
