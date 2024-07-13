@@ -10,9 +10,16 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final String userName = 'Vitu';
+
   final String userEmail = 'usuario@example.com';
 
   @override
@@ -20,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login Page',
       theme: ThemeData(),
-      home: ProfilePage(),
+      home: HomePage(),
     );
   }
 }

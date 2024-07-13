@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/bottom_navigation_bar.dart';
-import '../widgets/bordered_elevated_button.dart'; // Importe o widget personalizado
+import '../widgets/bordered_elevated_button.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class ProfilePage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.pop(context);
           },
         ),
       ),
@@ -70,12 +69,6 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 1,
-        onTap: (index) {
-          // Implementar navegação com base no índice selecionado
-        },
       ),
     );
   }
