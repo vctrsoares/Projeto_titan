@@ -137,9 +137,9 @@ class CustomCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.0),
               child: Image.asset(
                 imagePath,
-                height: 100,
+                height: 150,
                 width: double.infinity,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(height: 16.0),

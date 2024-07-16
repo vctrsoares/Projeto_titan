@@ -72,6 +72,7 @@ flutter:
     - assets/images/image_settings.png
     - assets/images/image_uiscreen.png
     - assets/images/image_htmlscreen.png
+    - assets/images/image_splashscreen.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

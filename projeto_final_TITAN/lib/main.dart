@@ -5,6 +5,7 @@ import 'package:projeto_final_titan/screens/settings_screen.dart';
 import 'package:projeto_final_titan/screens/signup_screen.dart';
 import 'package:projeto_final_titan/screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final String userName = 'Vitu';
-
   final String userEmail = 'usuario@example.com';
 
   @override
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Login Page',
       theme: ThemeData(),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
