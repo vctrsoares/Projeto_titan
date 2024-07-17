@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart';
+import 'product_detail.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -93,7 +94,19 @@ class HomeContent extends StatelessWidget {
         SizedBox(height: 16.0),
         GestureDetector(
           onTap: () {
-            // Navegar para a tela de detalhes do curso HTML
+            Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => CourseDetailPage(
+      courseTitle: 'HTML',
+      courseDescription: 'Você pode iniciar uma nova carreira em desenvolvimento web mento hoje aprendendo HTML e CSS. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie. ',
+      courseDuration: '1h 30min',
+      coursePrice: 50.0,
+      courseImage: 'assets/images/image_htmlcourse.png',
+    ),
+  ),
+);
+// Navegar para a tela de detalhes do curso HTML
           },
           child: CustomCard(
             duration: '3 h 30 min',

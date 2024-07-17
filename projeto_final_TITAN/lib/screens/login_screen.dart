@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -65,13 +64,19 @@ class _LoginPageState extends State<LoginPage> {
                     // Implement login functionality here
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange, 
+                    backgroundColor: Colors.deepOrange,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Log in'),
+                  child: Text(
+                    'Log in',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {

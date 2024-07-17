@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Login Page',
       theme: ThemeData(),
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
