@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Implement login functionality here
+                    Navigator.pushReplacementNamed(context, '/home');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrange,
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    // Implement navigation to register page here
+                    Navigator.pushNamed(context, '/signup');
                   },
                   child: const Text('Registre-se'),
                 ),

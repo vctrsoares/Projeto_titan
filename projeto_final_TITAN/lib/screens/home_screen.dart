@@ -62,27 +62,48 @@ class HomeContent extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: [
+        SizedBox(height: 40.0), // Ajuste para evitar a câmera do celular
         Text(
-          'Categoria:',
+          'Olá,',
+          style: TextStyle(fontSize: 18.0),
+        ),
+        Text(
+          'NomeDeUsuário',
           style: TextStyle(
-            fontSize: 16.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8.0),
+        SizedBox(height: 16.0),
         Wrap(
           spacing: 8.0,
           children: [
-            Chip(label: Text('#CSS')),
-            Chip(label: Text('#UX')),
-            Chip(label: Text('#Swift')),
-            Chip(label: Text('#UI')),
+            Text(
+              'Categoria:',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+            CategoryChip(label: '#CSS'),
+            CategoryChip(label: '#UX'),
+            CategoryChip(label: '#Swift'),
+            CategoryChip(label: '#UI'),
           ],
         ),
         SizedBox(height: 16.0),
         GestureDetector(
           onTap: () {
-            // Navegar para a tela de detalhes do curso UI
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CourseDetailPage(
+                  courseTitle: 'UI',
+                  courseDescription:
+                      'Você pode iniciar uma nova carreira em design de interfaces hoje aprendendo UI Design. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie. ',
+                  courseDuration: '3h 30min',
+                  coursePrice: 50.0,
+                  courseImage: 'assets/images/image_uiscreen.png',
+                ),
+              ),
+            ); // Navegar para a tela de detalhes do curso UI
           },
           child: CustomCard(
             duration: '3 h 30 min',
@@ -95,17 +116,18 @@ class HomeContent extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => CourseDetailPage(
-      courseTitle: 'HTML',
-      courseDescription: 'Você pode iniciar uma nova carreira em desenvolvimento web mento hoje aprendendo HTML e CSS. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie. ',
-      courseDuration: '1h 30min',
-      coursePrice: 50.0,
-      courseImage: 'assets/images/image_htmlcourse.png',
-    ),
-  ),
-);
+              context,
+              MaterialPageRoute(
+                builder: (context) => CourseDetailPage(
+                  courseTitle: 'HTML',
+                  courseDescription:
+                      'Você pode iniciar uma nova carreira em desenvolvimento web mento hoje aprendendo HTML e CSS. Tudo que você precisa é de um computador, um pouco de tempo, muita determinação e um professor em quem você confie. ',
+                  courseDuration: '3h 30min',
+                  coursePrice: 50.0,
+                  courseImage: 'assets/images/image_htmlcourse.png',
+                ),
+              ),
+            );
 // Navegar para a tela de detalhes do curso HTML
           },
           child: CustomCard(
@@ -116,6 +138,27 @@ class HomeContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class CategoryChip extends StatelessWidget {
+  final String label;
+
+  CategoryChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      label: Text(
+        label,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.blue,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(color: Colors.blue),
+      ),
     );
   }
 }

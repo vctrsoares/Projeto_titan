@@ -11,23 +11,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final String userName = 'Vitu';
-  final String userEmail = 'usuario@example.com';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Page',
-      theme: ThemeData(),
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      title: 'Navegação de Telas',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SplashScreen(),
+        '/welcome': (context) => WelcomePage(),
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignUpPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }

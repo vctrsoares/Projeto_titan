@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'your_courses_screen.dart';
 import '../widgets/bordered_elevated_button.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -32,13 +33,19 @@ class ProfilePage extends StatelessWidget {
                 ),
                 child: CircleAvatar(
                   radius: 50,
-                  backgroundImage: AssetImage('assets/images/image_profile.png'),
+                  backgroundImage:
+                      AssetImage('assets/images/image_profile.png'),
                 ),
               ),
               const SizedBox(height: 20),
               BorderedElevatedButton(
                 onPressed: () {
-                  // Navegar para a página de cursos
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YourCoursesPage(),
+                    ),
+                  ); // Navegar para a página de cursos
                 },
                 text: 'Seus cursos',
               ),
@@ -63,7 +70,8 @@ class ProfilePage extends StatelessWidget {
                 },
                 child: const Text(
                   'Sair do aplicativo',
-                  style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
                 ),
               ),
             ],

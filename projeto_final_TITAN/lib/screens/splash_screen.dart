@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Certifique-se de importar a home screen corretamente
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,15 +9,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+    _navigateToWelcome();
   }
 
-  _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 10), () {});
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
+  _navigateToWelcome() async {
+    await Future.delayed(Duration(seconds: 3), () {});
+    Navigator.pushReplacementNamed(context, '/welcome');
   }
 
   @override
@@ -30,11 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 200.0, // Define a largura da imagem
-              height: 200.0, // Define a altura da imagem
-              child: Image.asset('assets/images/image_splashscreen.png'), // Caminho da imagem
+              width: 200.0,
+              height: 200.0,
+              child: Image.asset('assets/images/image_splashscreen.png'),
             ),
-            SizedBox(height: 20.0), // Espaçamento entre a imagem e o texto
+            SizedBox(height: 20.0),
             Text(
               'Code Factory',
               style: TextStyle(
