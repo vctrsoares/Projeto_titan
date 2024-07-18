@@ -91,7 +91,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFE3562A),
+                backgroundColor: Colors.deepOrange,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'your_courses_screen.dart';
 import '../widgets/bordered_elevated_button.dart';
+import 'login_screen.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -66,7 +67,10 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  // Sair do aplicativo
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 },
                 child: const Text(
                   'Sair do aplicativo',

@@ -78,13 +78,19 @@ class _SignUpPageState extends State<SignUpPage> {
                     Navigator.pushReplacementNamed(context, '/home');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange, 
+                    backgroundColor: Colors.deepOrange,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Register'),
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
