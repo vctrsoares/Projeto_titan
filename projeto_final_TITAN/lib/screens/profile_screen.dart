@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final_titan/screens/home_screen.dart';
 import 'your_courses_screen.dart';
 import '../widgets/bordered_elevated_button.dart';
 import 'login_screen.dart';
-
+import 'not_saved_screen.dart';
+import 'payment_screen.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -14,7 +16,10 @@ class ProfilePage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
       ),
@@ -53,14 +58,24 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 10),
               BorderedElevatedButton(
                 onPressed: () {
-                  // Navegar para a página de salvos
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SavedCoursesPage(),
+                    ),
+                  ); // Navegar para a página de salvos
                 },
                 text: 'Salvos',
               ),
               const SizedBox(height: 10),
               BorderedElevatedButton(
                 onPressed: () {
-                  // Navegar para a página de pagamento
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentPage(),
+                    ),
+                  );// Navegar para a página de pagamento
                 },
                 text: 'Pagamento',
               ),

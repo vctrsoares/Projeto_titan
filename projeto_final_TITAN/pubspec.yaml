@@ -75,6 +75,8 @@ flutter:
     - assets/images/image_splashscreen.png
     - assets/images/image_htmlcourse.png
     - assets/images/image_fluttercourse.png
+    - assets/images/image_scrumcourse.png
+    - assets/images/image_notsaved.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
