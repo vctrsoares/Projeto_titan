@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'home_screen.dart'; // Certifique-se de importar a HomeScreen
 
 class SettingsPage extends StatefulWidget {
-  final String userName;
-  final String userEmail;
-
-  const SettingsPage({
-    Key? key,
-    required this.userName,
-    required this.userEmail,
-  }) : super(key: key);
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -23,17 +17,28 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    userName = widget.userName;
-    userEmail = widget.userEmail;
+    _loadUserData();
   }
 
-  void updateUserName(String newName) {
+  Future<void> _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('userName') ?? 'NomeDeUsuário';
+      userEmail = prefs.getString('userEmail') ?? 'email@example.com';
+    });
+  }
+
+  void updateUserName(String newName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userName', newName);
     setState(() {
       userName = newName;
     });
   }
 
-  void updateUserEmail(String newEmail) {
+  void updateUserEmail(String newEmail) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userEmail', newEmail);
     setState(() {
       userEmail = newEmail;
     });

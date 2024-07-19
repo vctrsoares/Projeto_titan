@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,6 +13,22 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  Future<void> _loginUser() async {
+    if (_formKey.currentState!.validate()) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? storedEmail = prefs.getString('userEmail');
+      String? storedPassword = prefs.getString('userPassword');
+
+      if (_emailController.text == storedEmail && _passwordController.text == storedPassword) {
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('E-mail ou senha incorretos')),
+        );
+      }
+    }
+  }
 
   String? _emailValidator(String? value) {
     if (value == null || value.isEmpty) {
@@ -82,9 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {
-                        Navigator.pushReplacementNamed(context, '/home');
-                      }
+                      print('Login button pressed');
+                      _loginUser();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrange,
@@ -93,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Log in',
                       style: TextStyle(
                           fontSize: 18,

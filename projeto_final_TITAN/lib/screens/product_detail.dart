@@ -6,6 +6,7 @@ class CourseDetailPage extends StatelessWidget {
   final String courseDuration;
   final double coursePrice;
   final String courseImage;
+  final VoidCallback onAddToCart;
 
   CourseDetailPage({
     required this.courseTitle,
@@ -13,6 +14,7 @@ class CourseDetailPage extends StatelessWidget {
     required this.courseDuration,
     required this.courseImage,
     required this.coursePrice,
+    required this.onAddToCart,
   });
 
   @override
@@ -81,7 +83,8 @@ class CourseDetailPage extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Adicionar lógica para adicionar ao carrinho
+                  onAddToCart();
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepOrange,
