@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -20,11 +20,12 @@ class _LoginPageState extends State<LoginPage> {
       String? storedEmail = prefs.getString('userEmail');
       String? storedPassword = prefs.getString('userPassword');
 
-      if (_emailController.text == storedEmail && _passwordController.text == storedPassword) {
+      if (_emailController.text == storedEmail &&
+          _passwordController.text == storedPassword) {
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('E-mail ou senha incorretos')),
+          const SnackBar(content: Text('E-mail ou senha incorretos')),
         );
       }
     }
@@ -33,7 +34,8 @@ class _LoginPageState extends State<LoginPage> {
   String? _emailValidator(String? value) {
     if (value == null || value.isEmpty) {
       return 'Por favor, insira o e-mail';
-    } else if (!RegExp(r'^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$').hasMatch(value)) {
+    } else if (!RegExp(r'^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$')
+        .hasMatch(value)) {
       return 'E-mail inválido. Use @gmail.com, @hotmail.com ou @outlook.com';
     }
     return null;
@@ -85,7 +87,9 @@ class _LoginPageState extends State<LoginPage> {
                       prefixIcon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
+                          _obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                         ),
                         onPressed: () {
                           setState(() {

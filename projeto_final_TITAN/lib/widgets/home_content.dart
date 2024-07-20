@@ -10,7 +10,8 @@ class HomeContent extends StatelessWidget {
   final int cartItemCount;
   final UserService _userService = UserService();
 
-  HomeContent({required this.onAddToCart, required this.cartItemCount});
+  HomeContent(
+      {super.key, required this.onAddToCart, required this.cartItemCount});
 
   @override
   Widget build(BuildContext context) {
@@ -18,27 +19,28 @@ class HomeContent extends StatelessWidget {
       future: _userService.getUserName(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return Center(child: Text('Erro ao carregar o nome do usuário'));
+          return const Center(
+              child: Text('Erro ao carregar o nome do usuário'));
         } else {
           return ListView(
             padding: EdgeInsets.all(16.0),
             children: [
-              SizedBox(height: 40.0), // Ajuste para evitar a câmera do celular
+              const SizedBox(height: 40.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Olá,',
                         style: TextStyle(fontSize: 18.0),
                       ),
                       Text(
                         snapshot.data ?? 'NomeDeUsuário',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 22.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -48,7 +50,7 @@ class HomeContent extends StatelessWidget {
                   IconButton(
                     icon: Stack(
                       children: [
-                        Icon(Icons.shopping_cart),
+                        const Icon(Icons.shopping_cart),
                         if (cartItemCount > 0)
                           Positioned(
                             right: 0,
@@ -58,13 +60,13 @@ class HomeContent extends StatelessWidget {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 minWidth: 12,
                                 minHeight: 12,
                               ),
                               child: Text(
                                 '$cartItemCount',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 8,
                                 ),
@@ -90,8 +92,8 @@ class HomeContent extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
-              Wrap(
+              const SizedBox(height: 16.0),
+              const Wrap(
                 spacing: 8.0,
                 children: [
                   Text(
@@ -105,7 +107,7 @@ class HomeContent extends StatelessWidget {
                   CategoryChip(label: '#UI'),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -125,14 +127,14 @@ class HomeContent extends StatelessWidget {
                     ),
                   ); // Navegar para a tela de detalhes do curso UI
                 },
-                child: CustomCard(
+                child: const CustomCard(
                   duration: '3 h 30 min',
                   title: 'UI',
                   description: 'Design avançado de interface móvel',
                   imagePath: 'assets/images/image_uiscreen.png',
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -152,7 +154,7 @@ class HomeContent extends StatelessWidget {
                     ),
                   );
                 },
-                child: CustomCard(
+                child: const CustomCard(
                   duration: '3 h 30 min',
                   title: 'HTML',
                   description: 'Aplicativos web avançados',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/defaulTextImage_widget.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
@@ -25,7 +26,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/login');
                 },
-                child: Text(
+                child: const Text(
                   'Skip',
                   style: TextStyle(fontSize: 18, color: Colors.black54),
                 ),
@@ -34,22 +35,25 @@ class _WelcomePageState extends State<WelcomePage> {
             Column(
               children: [
                 if (page == 0)
-                  DefaultTextImage(
+                  const DefaultTextImage(
                     imageSrc: 'assets/images/image_welcome_1.png',
                     title: 'Aprenda a qualquer hora e em qualquer lugar',
-                    textComplete: 'Sempre é o momento perfeito para passar o tempo dia aprendendo algo novo, de qualquer lugar!',
+                    textComplete:
+                        'Sempre é o momento perfeito para passar o tempo dia aprendendo algo novo, de qualquer lugar!',
                   )
                 else if (page == 1)
-                  DefaultTextImage(
+                  const DefaultTextImage(
                     imageSrc: 'assets/images/image_welcome_2.png',
                     title: 'Encontre um curso para você',
-                    textComplete: 'O conhecimento não tem fronteiras, nem o seu potencial. Explore um novo universo hoje!',
+                    textComplete:
+                        'O conhecimento não tem fronteiras, nem o seu potencial. Explore um novo universo hoje!',
                   )
                 else
-                  DefaultTextImage(
+                  const DefaultTextImage(
                     imageSrc: 'assets/images/image_welcome_3.png',
                     title: 'Aperfeiçoe suas habilidades',
-                    textComplete: 'O aprendizado é a única aventura que dura a vida toda.',
+                    textComplete:
+                        'O aprendizado é a única aventura que dura a vida toda.',
                   ),
                 Container(
                   width: 60,
@@ -99,7 +103,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
               child: Text(
                 textButton,
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],

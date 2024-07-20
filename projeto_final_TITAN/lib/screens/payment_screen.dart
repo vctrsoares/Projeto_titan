@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({Key? key}) : super(key: key);
+  const PaymentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class PaymentPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/image_notpayment.png', // Coloque a imagem apropriada aqui
+                'assets/images/image_notpayment.png',
                 height: 200,
               ),
               const SizedBox(height: 20),

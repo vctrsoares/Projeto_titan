@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: const Text('Home Screen'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -80,7 +80,7 @@ class CourseDetailPage extends StatelessWidget {
     cartItems.add(jsonEncode(newItem));
     await prefs.setStringList('cartItems', cartItems);
     onAddToCart();
-    Navigator.pop(context); // Voltar para a tela inicial
+    Navigator.pop(context);
   }
 
   @override
@@ -106,12 +106,12 @@ class CourseDetailPage extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                 decoration: BoxDecoration(
-                  color: Colors.blue, // Fundo azul preenchido
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Text(
                   'R\$${coursePrice.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 16.0, color: Colors.white), // Texto branco
+                  style: TextStyle(fontSize: 16.0, color: Colors.white),
                 ),
               ),
             ),
@@ -131,14 +131,14 @@ class CourseDetailPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => _addToCart(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrange, // Cor de fundo laranja
-                  foregroundColor: Colors.white, // Cor do texto
-                  padding: EdgeInsets.symmetric(vertical: 16.0), // Tamanho do botão
+                  backgroundColor: Colors.deepOrange,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0), // Borda menos arredondada
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text('Adicionar ao Carrinho'),
+                child: const Text('Adicionar ao Carrinho'),
               ),
             ),
           ],

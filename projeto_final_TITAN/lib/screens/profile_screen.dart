@@ -5,8 +5,9 @@ import '../widgets/bordered_elevated_button.dart';
 import 'login_screen.dart';
 import 'not_saved_screen.dart';
 import 'payment_screen.dart';
+
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                     width: 2.0,
                   ),
                 ),
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 50,
                   backgroundImage:
                       AssetImage('assets/images/image_profile.png'),
@@ -75,7 +76,7 @@ class ProfilePage extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => PaymentPage(),
                     ),
-                  );// Navegar para a página de pagamento
+                  ); // Navegar para a página de pagamento
                 },
                 text: 'Pagamento',
               ),

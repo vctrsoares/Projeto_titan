@@ -6,7 +6,7 @@ class CustomCard extends StatelessWidget {
   final String description;
   final String imagePath;
 
-  const CustomCard({
+  const CustomCard({super.key, 
     required this.duration,
     required this.title,
     required this.description,
@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
             SizedBox(height: 16.0),
             Text(
               duration,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.grey,
               ),
@@ -46,12 +46,12 @@ class CustomCard extends StatelessWidget {
             SizedBox(height: 8.0),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               description,
               style: TextStyle(

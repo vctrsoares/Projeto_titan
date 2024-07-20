@@ -21,8 +21,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadUserName() async {
-    setState(() {
-    });
+    setState(() {});
   }
 
   Future<void> _loadCartItemCount() async {

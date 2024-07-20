@@ -13,6 +13,8 @@ class _SettingsPageState extends State<SettingsPage> {
   late String userName;
   late String userEmail;
   String passwordChanged = "alterado há pouco";
+  bool _notificationsEnabled =
+      true; // Variável de estado para o switch de notificações
 
   @override
   void initState() {
@@ -25,6 +27,8 @@ class _SettingsPageState extends State<SettingsPage> {
     setState(() {
       userName = prefs.getString('userName') ?? 'NomeDeUsuário';
       userEmail = prefs.getString('userEmail') ?? 'email@example.com';
+      _notificationsEnabled = prefs.getBool('notificationsEnabled') ??
+          true; // Carregar o estado do switch
     });
   }
 
@@ -47,6 +51,14 @@ class _SettingsPageState extends State<SettingsPage> {
   void updatePasswordChanged(String newInfo) {
     setState(() {
       passwordChanged = newInfo;
+    });
+  }
+
+  void _toggleNotifications(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('notificationsEnabled', value);
+    setState(() {
+      _notificationsEnabled = value;
     });
   }
 
@@ -83,13 +95,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: ListTile(
                   leading: const Icon(Icons.notifications),
                   title: const Text('Notificações'),
                   trailing: Switch(
-                    value: true,
-                    onChanged: (bool value) {},
+                    value: _notificationsEnabled,
+                    onChanged: _toggleNotifications,
                   ),
                 ),
               ),
@@ -112,7 +125,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       trailing: IconButton(
                         icon: const Icon(Icons.edit),
                         onPressed: () async {
-                          final newName = await _showEditDialog(context, 'Nome', userName);
+                          final newName =
+                              await _showEditDialog(context, 'Nome', userName);
                           if (newName != null) {
                             updateUserName(newName);
                           }
@@ -132,7 +146,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       trailing: IconButton(
                         icon: const Icon(Icons.edit),
                         onPressed: () async {
-                          final newEmail = await _showEditDialog(context, 'Email', userEmail);
+                          final newEmail = await _showEditDialog(
+                              context, 'Email', userEmail);
                           if (newEmail != null) {
                             updateUserEmail(newEmail);
                           }
@@ -153,7 +168,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       trailing: IconButton(
                         icon: const Icon(Icons.edit),
                         onPressed: () async {
-                          final newPasswordInfo = await _showEditDialog(context, 'Senha', 'Alterar Senha');
+                          final newPasswordInfo = await _showEditDialog(
+                              context, 'Senha', 'Alterar Senha');
                           if (newPasswordInfo != null) {
                             updatePasswordChanged(newPasswordInfo);
                           }
@@ -170,8 +186,10 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  Future<String?> _showEditDialog(BuildContext context, String title, String currentValue) async {
-    TextEditingController _controller = TextEditingController(text: currentValue);
+  Future<String?> _showEditDialog(
+      BuildContext context, String title, String currentValue) async {
+    TextEditingController _controller =
+        TextEditingController(text: currentValue);
 
     return showDialog<String>(
       context: context,

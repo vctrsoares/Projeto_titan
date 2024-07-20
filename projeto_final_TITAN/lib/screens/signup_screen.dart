@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -47,15 +47,16 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   const Text(
                     'Crie a sua Conta',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                   ),
                   const SizedBox(height: 20),
                   TextFormField(
                     controller: _nameController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nome',
-                      prefixIcon: const Icon(Icons.person),
+                      prefixIcon: Icon(Icons.person),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -67,15 +68,17 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(height: 20),
                   TextFormField(
                     controller: _emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'E-mail',
-                      prefixIcon: const Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o e-mail';
-                      } else if (!RegExp(r'^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$').hasMatch(value)) {
+                      } else if (!RegExp(
+                              r'^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$')
+                          .hasMatch(value)) {
                         return 'E-mail inválido. Use @gmail.com, @hotmail.com ou @outlook.com';
                       }
                       return null;
@@ -91,7 +94,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       prefixIcon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
+                          _obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                         ),
                         onPressed: () {
                           setState(() {

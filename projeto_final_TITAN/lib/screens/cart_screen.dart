@@ -1,8 +1,8 @@
-import 'dart:convert'; // Importar a biblioteca para manipulação de JSON
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'payment_screen.dart'; // Importar a tela de pagamento
-import '../widgets/custom_card.dart'; // Importar o CustomCard
+import 'payment_screen.dart';
+import '../widgets/custom_card.dart';
 
 class CartScreen extends StatefulWidget {
   final VoidCallback onCartCleared;
@@ -71,17 +71,17 @@ class _CartScreenState extends State<CartScreen> {
                     child: ElevatedButton(
                       onPressed: _clearCart,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange, // Cor de fundo laranja
-                        foregroundColor: Colors.white, // Cor do texto
-                        padding: EdgeInsets.symmetric(vertical: 16.0), // Tamanho do botão
+                        backgroundColor: Colors.deepOrange,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0), // Borda arredondada
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                       child: Text('Esvaziar Carrinho'),
                     ),
                   ),
-                  SizedBox(width: 16.0), // Espaço entre os botões
+                  SizedBox(width: 16.0),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
@@ -93,11 +93,11 @@ class _CartScreenState extends State<CartScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange, // Cor de fundo laranja
-                        foregroundColor: Colors.white, // Cor do texto
-                        padding: EdgeInsets.symmetric(vertical: 16.0), // Tamanho do botão
+                        backgroundColor: Colors.deepOrange,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0), // Borda arredondada
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                       child: Text('Ir para Pagamento'),

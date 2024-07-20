@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToWelcome() async {
-    await Future.delayed(Duration(seconds: 3), () {});
+    await Future.delayed(const Duration(seconds: 3), () {});
     Navigator.pushReplacementNamed(context, '/welcome');
   }
 
@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 200.0,
               child: Image.asset('assets/images/image_splashscreen.png'),
             ),
-            SizedBox(height: 20.0),
-            Text(
+            const SizedBox(height: 20.0),
+            const Text(
               'Code Factory',
               style: TextStyle(
                 fontSize: 24.0,

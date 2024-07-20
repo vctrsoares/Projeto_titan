@@ -5,10 +5,10 @@ class BorderedElevatedButton extends StatelessWidget {
   final String text;
 
   const BorderedElevatedButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,8 @@ class BorderedElevatedButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: Text(text, style: const TextStyle(fontSize: 20, color: Colors.black)),
+        child: Text(text,
+            style: const TextStyle(fontSize: 20, color: Colors.black)),
       ),
     );
   }
