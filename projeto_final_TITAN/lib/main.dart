@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final_titan/screens/home_screen.dart';
-import 'package:projeto_final_titan/screens/profile_screen.dart';
-import 'package:projeto_final_titan/screens/settings_screen.dart';
 import 'package:projeto_final_titan/screens/signup_screen.dart';
 import 'package:projeto_final_titan/screens/welcome_screen.dart';
 import 'screens/login_screen.dart';

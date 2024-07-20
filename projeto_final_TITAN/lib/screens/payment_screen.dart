@@ -22,7 +22,7 @@ class PaymentPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/image_notsaved.png', // Coloque a imagem apropriada aqui
+                'assets/images/image_notpayment.png', // Coloque a imagem apropriada aqui
                 height: 200,
               ),
               const SizedBox(height: 20),

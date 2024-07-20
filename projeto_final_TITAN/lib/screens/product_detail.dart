@@ -1,4 +1,54 @@
+import 'dart:convert'; // Importar a biblioteca para manipulação de JSON
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Course Detail',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CourseDetailPage(
+                  courseTitle: 'Curso de Flutter',
+                  courseDescription: 'Aprenda Flutter do zero ao avançado.',
+                  courseDuration: '40 horas',
+                  coursePrice: 199.99,
+                  courseImage: 'assets/flutter_course.png',
+                  onAddToCart: () {},
+                ),
+              ),
+            );
+          },
+          child: Text('Ver Detalhes do Curso'),
+        ),
+      ),
+    );
+  }
+}
 
 class CourseDetailPage extends StatelessWidget {
   final String courseTitle;
@@ -12,94 +62,83 @@ class CourseDetailPage extends StatelessWidget {
     required this.courseTitle,
     required this.courseDescription,
     required this.courseDuration,
-    required this.courseImage,
     required this.coursePrice,
+    required this.courseImage,
     required this.onAddToCart,
   });
+
+  Future<void> _addToCart(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> cartItems = prefs.getStringList('cartItems') ?? [];
+    Map<String, dynamic> newItem = {
+      'title': courseTitle,
+      'description': courseDescription,
+      'duration': courseDuration,
+      'price': coursePrice,
+      'imagePath': courseImage,
+    };
+    cartItems.add(jsonEncode(newItem));
+    await prefs.setStringList('cartItems', cartItems);
+    onAddToCart();
+    Navigator.pop(context); // Voltar para a tela inicial
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(courseTitle),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.asset(
-                courseImage,
-                height: 200,
-              ),
+            Image.asset(courseImage),
+            SizedBox(height: 16.0),
+            Text(
+              'Sobre o Curso',
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8.0),
             Align(
               alignment: Alignment.centerRight,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.blue, // Fundo azul preenchido
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Text(
-                  'R\$ ${coursePrice.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  'R\$${coursePrice.toStringAsFixed(2)}',
+                  style: TextStyle(fontSize: 16.0, color: Colors.white), // Texto branco
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
-              'Sobre o curso',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.0),
             Text(
               courseDescription,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16.0),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8.0),
             Text(
-              'Duração',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              'Duração: $courseDuration',
+              style: TextStyle(fontSize: 16.0),
             ),
-            SizedBox(height: 8),
-            Text(
-              courseDuration,
-              style: TextStyle(fontSize: 16),
-            ),
-            Spacer(),
-            Center(
+            SizedBox(height: 16.0),
+            SizedBox(
+              width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  onAddToCart();
-                  Navigator.pop(context);
-                },
+                onPressed: () => _addToCart(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrange,
-                  minimumSize: const Size(double.infinity, 50),
+                  backgroundColor: Colors.deepOrange, // Cor de fundo laranja
+                  foregroundColor: Colors.white, // Cor do texto
+                  padding: EdgeInsets.symmetric(vertical: 16.0), // Tamanho do botão
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.0), // Borda menos arredondada
                   ),
                 ),
-                child: Text(
-                  'Adicionar ao Carrinho',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
+                child: Text('Adicionar ao Carrinho'),
               ),
             ),
           ],
